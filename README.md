@@ -37,3 +37,16 @@ If Home team is predicted to not win and Away team is predicted to not win - ans
 * The conversion of each row which presents a game into a vector in order to be able to apply the ML techniques.
 * When trying to implement and run Adaboost on our data because in class we learned that for Adaboost, each class has its opposite class, but in our case we have 3   classes: home team wins, away team wins, or a tie, so it means that none of our the classes has its opposite class.
 
+## Algorithms <br />
+KNN
+K-nearest neighbors algorithm uses an aproach where when we want to classify some new data instance, it looks at the training data we already have and get the k training data instances that are closest to the new instance. Then in order to clasify the new instance, it uses the k neighbors and checks which class appears the most.
+
+In our case each game is presented as a vector which is consists of the data columns.
+In order predict whether a new given game will be ended in a win of the home team, X team or will be ended with a tie, we convert the game details into a vector and run knn on it, means we we are using the existing data we have.
+
+
+Decision Tree
+
+Logistic Regression
+
+Random Forest
