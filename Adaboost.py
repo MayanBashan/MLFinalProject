@@ -1,19 +1,16 @@
 import math
 import numpy as np
 from KNNClassifier import KNNClassifier
-from MasksCreator import create_knn_masks
+from MasksCreator import create_weak_knn_masks
 from WeightedRule import WeightedRule
 from WeightedVector import WeightedVector
 import matplotlib.pyplot as plt
 
 
-
-
-
 def ada_main(X_test, X_base, Y_test, Y_base, mapper):
     res = []
     for k in (5, 7, 11, 13):
-        weak_knn_masks = create_knn_masks(mapper)
+        weak_knn_masks = create_weak_knn_masks(mapper)
         classifiers = []
         for mask in weak_knn_masks:
             classifiers.append(KNNClassifier(mask, k))

@@ -5,6 +5,8 @@ from KnnMain import knn_main
 from DecissionTreeMain import dt_main
 from RandomForestMain import rf_main
 from BuildTeam import bt_main
+from Adaboost import ada_main
+
 class Main:
     def __init__(self, data_set_prefix):
         self.X = []
@@ -60,8 +62,17 @@ class Main:
     def build_team(self):
         bt_main(self.mapper, self.X, self.Y)
 
+    def run_adaboost(self):
+        len_x = len(self.X)
+        idx = len_x-self.num_in_last
+        X_test = self.X[idx:]
+        X_base = self.X[:idx]
+        Y_test = self.Y[idx:]
+        Y_base = self.Y[:idx]
+        ada_main(X_test, X_base, Y_test, Y_base, self.mapper)
 
 if __name__ == "__main__":
     main = Main("Premier")
     main.run_classifirs()
     main.build_team()
+    main.run_adaboost()
