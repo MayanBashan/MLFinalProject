@@ -22,3 +22,12 @@ class KNNClassifier:
                 correct += 1
             t += 1
         return correct/t
+
+    def classify_single(self, match, X_base, Y_base):
+        neigh = NearestNeighbors(n_neighbors=self.k)
+        masked_base_set = self.mask.mask_base(X_base)
+        neigh.fit(masked_base_set)
+        res = neigh.kneighbors([self.mask.mask(match)], return_distance=False)
+        votes = [Y_base[i] for i in res[0]]
+        vote_result = Counter(votes).most_common(1)[0][0]
+        return vote_result
